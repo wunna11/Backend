@@ -1,0 +1,9 @@
+route folder -> controller(MVC Architecture)
+
+cd project
+npm install
+npm start
+
+
+// Express work flow
+Browser => Http Requeset => Express App => Router => controller => Model => View
