@@ -6,8 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-let moviesRouter = require('./routes/movie');
+let moviesRouter = require('./routes/movies');
 
+// Database
+const mongoose = require('mongoose');
+const { db } = require('./config/database');
 var app = express();
 
 // view engine setup
@@ -19,6 +22,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Connect Mongo database
+mongoose.connect(db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log('MongoDB connected!'))
+    .catch(err => console.log(err));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
