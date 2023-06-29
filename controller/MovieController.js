@@ -40,6 +40,19 @@ const saveMovie = async function (req, res, next) {
     }
 }
 
+const getMovieById = async function (req, res, next) {
+    const movieId = req.params.id;
+    console.log('movieId', movieId);
+    try {
+        const movie = await movieService.getMovieById(movieId)
+        if (!movie) throw Error('Cannot get movie');
+        await res.status(201).json(movie);
+    } catch (err) {
+        console.log(err);
+        await res.status(400).json({message: err})
+    }
+}
+
 const updateMovie = async function (req, res, next) {
     const movieId = req.params.id;
     console.log('movie id', movieId);
@@ -69,6 +82,7 @@ const deleteMovie = async function (req, res, next) {
 module.exports = {
     getAllMovie,
     saveMovie,
+    getMovieById,
     updateMovie,
     deleteMovie
 };

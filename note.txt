@@ -8,4 +8,6 @@ npm start
 // Express work flow
 Browser => Http Requeset => Express App => Router => controller => Model => View
 
-mongodb://localhost:27017
+mongodb://localhost:
+
+Meta Programming -> CRUD generate

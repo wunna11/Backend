@@ -18,4 +18,6 @@ const MovieSchema = new Schema({
         type: Number
     }
 });
+
+// create a model
 module.exports = mongoose.model('Movies', MovieSchema);

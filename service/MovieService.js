@@ -9,6 +9,11 @@ const newMovie = async (movie) => {
     return item.save();
 }
 
+const getMovieById = async (movieId) => {
+    const movie = await Movies.findById(movieId);
+    return movie;
+}
+
 const updateMovie = async (movieId, movie) => {
     const newMovie = await Movies.findByIdAndUpdate(movieId, movie, { new: true });
     return newMovie;
@@ -22,6 +27,7 @@ const deleteMovie = async (movieId) => {
 module.exports = {
     getAllMovie,
     newMovie,
+    getMovieById,
     updateMovie,
     deleteMovie
 };
